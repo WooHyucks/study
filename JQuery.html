@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      @keyframes slide-up {
+        0% {
+          transform: translateY(100%);
+          opacity: 0;
+        }
+        20% {
+          transform: translateY(0%);
+          opacity: 1;
+        }
+        50% {
+          transform: translateY(0%);
+          opacity: 1;
+        }
+        70% {
+          transform: translateY(-10%);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(-100%);
+          opacity: 0;
+        }
+      }
+
+      li {
+        animation: slide-up 6s ease-in-out infinite;
+      }
+
+      li:nth-child(1) {
+        animation-delay: 0s;
+      }
+
+      li:nth-child(2) {
+        animation-delay: 1s;
+      }
+
+      li:nth-child(3) {
+        animation-delay: 2s;
+      }
+
+      li:nth-child(4) {
+        animation-delay: 3s;
+      }
+
+      li:nth-child(5) {
+        animation-delay: 4s;
+      }
+
+      li:nth-child(6) {
+        animation-delay: 5s;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h2>인기검색어</h2>
+      <ol id="items"></ol>
+    </div>
+    <script
+      src="https://code.jquery.com/jquery-3.6.4.min.js"
+      integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      const items = ["민소매", "바지", "나시", "자켓", "패딩"];
+      const list = $("#items");
+
+      $.each(items, function (index, value) {
+        const listItem = $("<li></li>");
+        const link = $("<a></a>")
+          .attr(
+            "href",
+            "https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=1&ie=utf8&query=" +
+              value
+          )
+          .text(value);
+
+        listItem.append(link);
+        list.append(listItem);
+      });
+    </script>
+  </body>
+</html>
